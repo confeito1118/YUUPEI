@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             userAdd = new Button();
+            excel = new Button();
             SuspendLayout();
             // 
             // userAdd
@@ -41,11 +42,22 @@
             userAdd.UseVisualStyleBackColor = true;
             userAdd.Click += userAdd_Click;
             // 
+            // excel
+            // 
+            excel.Location = new Point(153, 60);
+            excel.Name = "excel";
+            excel.Size = new Size(94, 29);
+            excel.TabIndex = 1;
+            excel.Text = "button1";
+            excel.UseVisualStyleBackColor = true;
+            excel.Click += excel_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(excel);
             Controls.Add(userAdd);
             Name = "Form1";
             Text = "Form1";
@@ -55,5 +67,6 @@
         #endregion
 
         private Button userAdd;
+        private Button excel;
     }
 }
