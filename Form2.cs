@@ -16,5 +16,10 @@ namespace YUUPEI
         {
             InitializeComponent();
         }
+
+        private void textBox14_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -18,13 +18,14 @@ namespace YUUPEI
         private void excel_Click(object sender, EventArgs e)
         {
             // 新規ワークブックの作成
-            // using var wb = new XLWorkbook();
+            //using var wb = new XLWorkbook();
             // 既存のワークブックを開く
-            using var wb = new XLWorkbook(@"C:\Users\sakai\test.xlsx");
+            using var wb = new XLWorkbook(@"C:\Users\yudu-\Downloads\hogehoge.xlsx");
             // 新規シートの作成
-            var ws = wb.Worksheets.Add("aaa");
+            // var ws = wb.Worksheets.Add("aaa");
+            var ws = wb.Worksheet("aaa");
             // セルに値を入力
-            var cell = ws.Cell(1, 1);
+            var cell = ws.Cell(4, 4);
             cell.Value = "てすと";
             // Excelの保存
             wb.SaveAs(@"C:\Users\yudu-\Downloads\hogehoge.xlsx");
