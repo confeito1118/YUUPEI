@@ -39,23 +39,24 @@
             label5 = new Label();
             sex_man = new RadioButton();
             sex_woman = new RadioButton();
-            birthday = new DateTimePicker();
+            date_birthday = new DateTimePicker();
             label6 = new Label();
             label7 = new Label();
-            dateTimePicker2 = new DateTimePicker();
-            textBox21 = new TextBox();
+            date_servicestart = new DateTimePicker();
+            mansion = new TextBox();
             label24 = new Label();
-            textBox22 = new TextBox();
+            zipcode = new TextBox();
             label25 = new Label();
-            textBox23 = new TextBox();
+            address = new TextBox();
             label26 = new Label();
             label9 = new Label();
-            textBox5 = new TextBox();
+            tell = new TextBox();
             label8 = new Label();
-            textBox6 = new TextBox();
+            tell_type = new TextBox();
             label17 = new Label();
-            textBox14 = new TextBox();
+            disease = new TextBox();
             groupBox1 = new GroupBox();
+            add = new Button();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -154,12 +155,12 @@
             sex_woman.Text = "女";
             sex_woman.UseVisualStyleBackColor = true;
             // 
-            // birthday
+            // date_birthday
             // 
-            birthday.Location = new Point(146, 203);
-            birthday.Name = "birthday";
-            birthday.Size = new Size(250, 27);
-            birthday.TabIndex = 11;
+            date_birthday.Location = new Point(146, 203);
+            date_birthday.Name = "date_birthday";
+            date_birthday.Size = new Size(250, 27);
+            date_birthday.TabIndex = 11;
             // 
             // label6
             // 
@@ -179,19 +180,19 @@
             label7.TabIndex = 13;
             label7.Text = "サービス利用開始日";
             // 
-            // dateTimePicker2
+            // date_servicestart
             // 
-            dateTimePicker2.Location = new Point(162, 364);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(250, 27);
-            dateTimePicker2.TabIndex = 14;
+            date_servicestart.Location = new Point(162, 364);
+            date_servicestart.Name = "date_servicestart";
+            date_servicestart.Size = new Size(250, 27);
+            date_servicestart.TabIndex = 14;
             // 
-            // textBox21
+            // mansion
             // 
-            textBox21.Location = new Point(768, 426);
-            textBox21.Name = "textBox21";
-            textBox21.Size = new Size(200, 27);
-            textBox21.TabIndex = 42;
+            mansion.Location = new Point(768, 426);
+            mansion.Name = "mansion";
+            mansion.Size = new Size(200, 27);
+            mansion.TabIndex = 42;
             // 
             // label24
             // 
@@ -202,12 +203,12 @@
             label24.TabIndex = 37;
             label24.Text = "郵便番号";
             // 
-            // textBox22
+            // zipcode
             // 
-            textBox22.Location = new Point(768, 332);
-            textBox22.Name = "textBox22";
-            textBox22.Size = new Size(200, 27);
-            textBox22.TabIndex = 38;
+            zipcode.Location = new Point(768, 332);
+            zipcode.Name = "zipcode";
+            zipcode.Size = new Size(200, 27);
+            zipcode.TabIndex = 38;
             // 
             // label25
             // 
@@ -218,12 +219,12 @@
             label25.TabIndex = 39;
             label25.Text = "住所";
             // 
-            // textBox23
+            // address
             // 
-            textBox23.Location = new Point(768, 376);
-            textBox23.Name = "textBox23";
-            textBox23.Size = new Size(200, 27);
-            textBox23.TabIndex = 40;
+            address.Location = new Point(768, 376);
+            address.Name = "address";
+            address.Size = new Size(200, 27);
+            address.TabIndex = 40;
             // 
             // label26
             // 
@@ -243,12 +244,12 @@
             label9.TabIndex = 19;
             label9.Text = "種類";
             // 
-            // textBox5
+            // tell
             // 
-            textBox5.Location = new Point(70, 306);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(200, 27);
-            textBox5.TabIndex = 17;
+            tell.Location = new Point(70, 306);
+            tell.Name = "tell";
+            tell.Size = new Size(200, 27);
+            tell.TabIndex = 17;
             // 
             // label8
             // 
@@ -259,12 +260,12 @@
             label8.TabIndex = 16;
             label8.Text = "電話";
             // 
-            // textBox6
+            // tell_type
             // 
-            textBox6.Location = new Point(321, 306);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(125, 27);
-            textBox6.TabIndex = 18;
+            tell_type.Location = new Point(321, 306);
+            tell_type.Name = "tell_type";
+            tell_type.Size = new Size(125, 27);
+            tell_type.TabIndex = 18;
             // 
             // label17
             // 
@@ -274,46 +275,55 @@
             label17.Size = new Size(54, 20);
             label17.TabIndex = 34;
             label17.Text = "主病名";
-            label17.Click += this.label17_Click;
             // 
-            // textBox14
+            // disease
             // 
-            textBox14.Location = new Point(115, 242);
-            textBox14.Name = "textBox14";
-            textBox14.Size = new Size(400, 27);
-            textBox14.TabIndex = 35;
-            textBox14.TextChanged += textBox14_TextChanged;
+            disease.Location = new Point(115, 242);
+            disease.Name = "disease";
+            disease.Size = new Size(400, 27);
+            disease.TabIndex = 35;
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(textBox14);
+            groupBox1.Controls.Add(disease);
             groupBox1.Controls.Add(label17);
-            groupBox1.Controls.Add(textBox6);
+            groupBox1.Controls.Add(tell_type);
             groupBox1.Controls.Add(label8);
-            groupBox1.Controls.Add(textBox5);
+            groupBox1.Controls.Add(tell);
             groupBox1.Controls.Add(label9);
-            groupBox1.Controls.Add(dateTimePicker2);
+            groupBox1.Controls.Add(date_servicestart);
             groupBox1.Controls.Add(label7);
-            groupBox1.Location = new Point(44, 12);
+            groupBox1.Location = new Point(41, 29);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(1000, 476);
             groupBox1.TabIndex = 15;
             groupBox1.TabStop = false;
             groupBox1.Text = "利用者様情報";
             // 
+            // add
+            // 
+            add.Location = new Point(947, 543);
+            add.Name = "add";
+            add.Size = new Size(94, 29);
+            add.TabIndex = 43;
+            add.Text = "追加";
+            add.UseVisualStyleBackColor = true;
+            add.Click += add_Click;
+            // 
             // Form2
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1088, 521);
-            Controls.Add(textBox21);
+            ClientSize = new Size(1088, 609);
+            Controls.Add(add);
+            Controls.Add(mansion);
             Controls.Add(label24);
-            Controls.Add(textBox22);
+            Controls.Add(zipcode);
             Controls.Add(label25);
-            Controls.Add(textBox23);
+            Controls.Add(address);
             Controls.Add(label26);
             Controls.Add(label6);
-            Controls.Add(birthday);
+            Controls.Add(date_birthday);
             Controls.Add(sex_woman);
             Controls.Add(sex_man);
             Controls.Add(label5);
@@ -347,22 +357,23 @@
         private Label label5;
         private RadioButton sex_man;
         private RadioButton sex_woman;
-        private DateTimePicker birthday;
+        private DateTimePicker date_birthday;
         private Label label6;
         private Label label7;
-        private DateTimePicker dateTimePicker2;
-        private TextBox textBox21;
+        private DateTimePicker date_servicestart;
+        private TextBox mansion;
         private Label label24;
-        private TextBox textBox22;
+        private TextBox zipcode;
         private Label label25;
-        private TextBox textBox23;
+        private TextBox address;
         private Label label26;
         private Label label9;
-        private TextBox textBox5;
+        private TextBox tell;
         private Label label8;
-        private TextBox textBox6;
+        private TextBox tell_type;
         private Label label17;
-        private TextBox textBox14;
+        private TextBox disease;
         private GroupBox groupBox1;
+        private Button add;
     }
 }

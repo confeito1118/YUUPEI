@@ -30,6 +30,8 @@
         {
             userAdd = new Button();
             excel = new Button();
+            userDataView = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)userDataView).BeginInit();
             SuspendLayout();
             // 
             // userAdd
@@ -52,15 +54,27 @@
             excel.UseVisualStyleBackColor = true;
             excel.Click += excel_Click;
             // 
+            // userDataView
+            // 
+            userDataView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            userDataView.Location = new Point(53, 125);
+            userDataView.Name = "userDataView";
+            userDataView.RowHeadersWidth = 51;
+            userDataView.Size = new Size(1104, 377);
+            userDataView.TabIndex = 2;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1216, 536);
+            Controls.Add(userDataView);
             Controls.Add(excel);
             Controls.Add(userAdd);
             Name = "Form1";
             Text = "Form1";
+            Load += Form1_Load;
+            ((System.ComponentModel.ISupportInitialize)userDataView).EndInit();
             ResumeLayout(false);
         }
 
@@ -68,5 +82,6 @@
 
         private Button userAdd;
         private Button excel;
+        private DataGridView userDataView;
     }
 }

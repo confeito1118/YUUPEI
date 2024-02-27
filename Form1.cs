@@ -1,9 +1,19 @@
 using ClosedXML.Excel;
+using DocumentFormat.OpenXml.Office2019.Excel.ThreadedComments;
+using DocumentFormat.OpenXml.Spreadsheet;
+using System.Data.SQLite;
+using System.Net;
+using System.Reflection.Emit;
+using System.Text;
+using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace YUUPEI
 {
     public partial class Form1 : Form
     {
+        const string connectionString = "Data Source=DataBase.sqlite";
+
         public Form1()
         {
             InitializeComponent();
@@ -29,6 +39,79 @@ namespace YUUPEI
             cell.Value = "てすと";
             // Excelの保存
             wb.SaveAs(@"C:\Users\yudu-\Downloads\hogehoge.xlsx");
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            string fileName = @"./start.txt";
+            if (System.IO.File.Exists(fileName))
+            {
+                // MessageBox.Show("'" + fileName + "' セットアップウィザードは存在します。");
+                
+                userDataView.ColumnCount = 3;
+                userDataView.RowCount = 50;
+
+                userDataView.Columns[0].HeaderText = "No";
+                userDataView.Columns[1].HeaderText = "氏名";
+                userDataView.Columns[2].HeaderText = "性別";
+
+                userDataView.Rows[0].Cells[0].Value = 1;
+                userDataView.Rows[0].Cells[1].Value = "日本ハム";
+                userDataView.Rows[0].Cells[2].Value = "北海道";
+            }
+            else
+            {
+                // テーブル名が存在しなければ作成する
+                StringBuilder query = new StringBuilder();
+                query.Clear();
+                query.Append("CREATE TABLE IF NOT EXISTS userlist (");
+                query.Append(" number INTEGER PRIMARY KEY AUTOINCREMENT");
+                query.Append(" ,name_kan_sei TEXT NOT NULL");
+                query.Append(" ,name_kan_mei TEXT NOT NULL");
+                query.Append(" ,name_furi_sei TEXT NOT NULL");
+                query.Append(" ,name_furi_mei TEXT NOT NULL");
+                query.Append(" ,sex INTEGER NOT NULL");
+                query.Append(" ,date_birthday DATE NOT NULL");
+                query.Append(" ,disease TEXT");
+                query.Append(" ,tell TEXT NOT NULL");
+                query.Append(" ,tell_type TEXT NOT NULL");
+                query.Append(" ,zipcode TEXT NOT NULL");
+                query.Append(" ,address TEXT NOT NULL");
+                query.Append(" ,mansion TEXT");
+                query.Append(" ,date_servicestart DATE NOT NULL");
+                //query.Append(" ,primary key (NO)");
+                query.Append(")");
+
+                // クエリー実行
+                ExecuteNonQuery(query.ToString());
+
+                using (FileStream fs = File.Create(fileName)) ;
+            }
+        }
+
+        private void ExecuteNonQuery(string query)
+        {
+            try
+            {
+                // 接続先を指定
+                using (var conn = new SQLiteConnection(connectionString))
+                using (var command = conn.CreateCommand())
+                {
+                    // 接続
+                    conn.Open();
+
+                    // コマンドの実行処理
+                    command.CommandText = query;
+                    command.ExecuteNonQuery();
+                    //var value = command.ExecuteNonQuery();
+                    //MessageBox.Show($"更新されたレコード数は {value} です。");
+                }
+            }
+            catch (Exception ex)
+            {
+                //例外が発生した時はメッセージボックスを表示
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
