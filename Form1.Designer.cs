@@ -31,6 +31,8 @@
             userAdd = new Button();
             excel = new Button();
             userDataView = new DataGridView();
+            name_kan_sei = new DataGridViewTextBoxColumn();
+            detail = new DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)userDataView).BeginInit();
             SuspendLayout();
             // 
@@ -57,11 +59,27 @@
             // userDataView
             // 
             userDataView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            userDataView.Columns.AddRange(new DataGridViewColumn[] { name_kan_sei, detail });
             userDataView.Location = new Point(53, 125);
             userDataView.Name = "userDataView";
             userDataView.RowHeadersWidth = 51;
             userDataView.Size = new Size(1104, 377);
             userDataView.TabIndex = 2;
+            // 
+            // name_kan_sei
+            // 
+            name_kan_sei.HeaderText = "氏名";
+            name_kan_sei.MinimumWidth = 6;
+            name_kan_sei.Name = "name_kan_sei";
+            name_kan_sei.ReadOnly = true;
+            name_kan_sei.Width = 125;
+            // 
+            // detail
+            // 
+            detail.HeaderText = "詳細";
+            detail.MinimumWidth = 6;
+            detail.Name = "detail";
+            detail.Width = 125;
             // 
             // Form1
             // 
@@ -83,5 +101,7 @@
         private Button userAdd;
         private Button excel;
         private DataGridView userDataView;
+        private DataGridViewTextBoxColumn name_kan_sei;
+        private DataGridViewButtonColumn detail;
     }
 }

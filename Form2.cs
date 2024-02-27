@@ -41,6 +41,8 @@ namespace YUUPEI
                 mansion.Text.ToString(),
                 date_servicestart.Text
             );
+
+            this.Close();
         }
 
         // ユーザ情報の登録

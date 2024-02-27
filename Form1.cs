@@ -51,13 +51,36 @@ namespace YUUPEI
                 userDataView.ColumnCount = 3;
                 userDataView.RowCount = 50;
 
-                userDataView.Columns[0].HeaderText = "No";
+                userDataView.Columns[0].HeaderText = "éÅñº";
                 userDataView.Columns[1].HeaderText = "éÅñº";
-                userDataView.Columns[2].HeaderText = "ê´ï ";
+                userDataView.Columns[2].HeaderText = "èZèä";
 
-                userDataView.Rows[0].Cells[0].Value = 1;
-                userDataView.Rows[0].Cells[1].Value = "ì˙ñ{ÉnÉÄ";
-                userDataView.Rows[0].Cells[2].Value = "ñkäCìπ";
+                // Ç«ÇÃã»ÇëIÇÒÇ≈Ç¢ÇÈÇ©
+                using (var connection = new SQLiteConnection(connectionString))
+                {
+                    connection.Open();
+
+                    var cnt = 0;
+
+                    var sql = "SELECT * FROM userlist";
+                    using (var command = new SQLiteCommand(sql, connection))
+                    {
+                        using (var reader = command.ExecuteReader())
+                        {
+
+                            while (reader.Read())
+                            {
+                                userDataView.Rows[cnt].Cells[0].Value = (string) reader["name_kan_sei"] + " " + (string) reader["name_kan_mei"];
+                                userDataView.Rows[cnt].Cells[1].Value = (string) reader["name_furi_sei"] + " " + (string) reader["name_furi_mei"];
+                                userDataView.Rows[cnt].Cells[2].Value = (string) reader["address"];
+                                cnt++;
+                            }
+                            reader.Close();
+                        }
+                    }
+
+                    connection.Close();
+                }
             }
             else
             {
