@@ -63,11 +63,11 @@ namespace YUUPEI
 
                             while (reader.Read())
                             {
-                                userDataView.Rows[cnt].Cells[0].Value = (string) reader["name_kan_sei"] + " " + (string) reader["name_kan_mei"];
+                                userDataView.Rows[cnt].Cells[0].Value = (string)reader["name_kan_sei"] + " " + (string)reader["name_kan_mei"];
                                 // userDataView.Rows[cnt].Cells[].Value = (string) reader["name_furi_sei"] + " " + (string) reader["name_furi_mei"];
-                                userDataView.Rows[cnt].Cells[1].Value = (string) reader["address"];
-                                userDataView.Rows[cnt].Cells[2].Value = (string) reader["tell"] + "（" + (string) reader["tell_type"] + "）";
-                                // userDataView.Rows[cnt].Cells[3].Value = "a";
+                                userDataView.Rows[cnt].Cells[1].Value = (string)reader["address"];
+                                userDataView.Rows[cnt].Cells[2].Value = (string)reader["tell"] + "（" + (string)reader["tell_type"] + "）";
+                                userDataView.Rows[cnt].Cells[3].Value = "編集";
                                 cnt++;
                             }
                             reader.Close();
@@ -141,6 +141,18 @@ namespace YUUPEI
         {
             Form2 form2 = new Form2();
             form2.Show();
+        }
+
+        private void userDataView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // クリックした列が対象列かチェックする
+            DataGridView dgv = (DataGridView) sender;
+            //"Button"列ならば、ボタンがクリックされた
+            if (dgv.Columns[e.ColumnIndex].Name == "detail")
+            {
+                MessageBox.Show(e.RowIndex.ToString() +
+                    "行のボタンがクリックされました。");
+            }
         }
     }
 }

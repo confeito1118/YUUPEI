@@ -31,14 +31,14 @@
             userAdd = new Button();
             excel = new Button();
             userDataView = new DataGridView();
-            menuStrip1 = new MenuStrip();
-            ファイルFToolStripMenuItem = new ToolStripMenuItem();
-            ユーザ追加AToolStripMenuItem = new ToolStripMenuItem();
-            閉じるWToolStripMenuItem = new ToolStripMenuItem();
             name_kan_sei = new DataGridViewTextBoxColumn();
             adress = new DataGridViewTextBoxColumn();
             tell = new DataGridViewTextBoxColumn();
             detail = new DataGridViewButtonColumn();
+            menuStrip1 = new MenuStrip();
+            ファイルFToolStripMenuItem = new ToolStripMenuItem();
+            ユーザ追加AToolStripMenuItem = new ToolStripMenuItem();
+            閉じるWToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)userDataView).BeginInit();
             menuStrip1.SuspendLayout();
             SuspendLayout();
@@ -72,36 +72,7 @@
             userDataView.RowHeadersWidth = 51;
             userDataView.Size = new Size(1104, 377);
             userDataView.TabIndex = 2;
-            // 
-            // menuStrip1
-            // 
-            menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { ファイルFToolStripMenuItem });
-            menuStrip1.Location = new Point(0, 0);
-            menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(1216, 28);
-            menuStrip1.TabIndex = 3;
-            menuStrip1.Text = "menuStrip1";
-            // 
-            // ファイルFToolStripMenuItem
-            // 
-            ファイルFToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { ユーザ追加AToolStripMenuItem, 閉じるWToolStripMenuItem });
-            ファイルFToolStripMenuItem.Name = "ファイルFToolStripMenuItem";
-            ファイルFToolStripMenuItem.Size = new Size(82, 24);
-            ファイルFToolStripMenuItem.Text = "ファイル(&F)";
-            // 
-            // ユーザ追加AToolStripMenuItem
-            // 
-            ユーザ追加AToolStripMenuItem.Name = "ユーザ追加AToolStripMenuItem";
-            ユーザ追加AToolStripMenuItem.Size = new Size(176, 26);
-            ユーザ追加AToolStripMenuItem.Text = "ユーザ追加(&A)";
-            ユーザ追加AToolStripMenuItem.Click += ユーザ追加AToolStripMenuItem_Click;
-            // 
-            // 閉じるWToolStripMenuItem
-            // 
-            閉じるWToolStripMenuItem.Name = "閉じるWToolStripMenuItem";
-            閉じるWToolStripMenuItem.Size = new Size(176, 26);
-            閉じるWToolStripMenuItem.Text = "閉じる(&W)";
+            userDataView.CellContentClick += userDataView_CellContentClick;
             // 
             // name_kan_sei
             // 
@@ -133,6 +104,36 @@
             detail.Name = "detail";
             detail.Text = "詳細";
             detail.Width = 125;
+            // 
+            // menuStrip1
+            // 
+            menuStrip1.ImageScalingSize = new Size(20, 20);
+            menuStrip1.Items.AddRange(new ToolStripItem[] { ファイルFToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(1216, 28);
+            menuStrip1.TabIndex = 3;
+            menuStrip1.Text = "menuStrip1";
+            // 
+            // ファイルFToolStripMenuItem
+            // 
+            ファイルFToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { ユーザ追加AToolStripMenuItem, 閉じるWToolStripMenuItem });
+            ファイルFToolStripMenuItem.Name = "ファイルFToolStripMenuItem";
+            ファイルFToolStripMenuItem.Size = new Size(82, 24);
+            ファイルFToolStripMenuItem.Text = "ファイル(&F)";
+            // 
+            // ユーザ追加AToolStripMenuItem
+            // 
+            ユーザ追加AToolStripMenuItem.Name = "ユーザ追加AToolStripMenuItem";
+            ユーザ追加AToolStripMenuItem.Size = new Size(176, 26);
+            ユーザ追加AToolStripMenuItem.Text = "ユーザ追加(&A)";
+            ユーザ追加AToolStripMenuItem.Click += ユーザ追加AToolStripMenuItem_Click;
+            // 
+            // 閉じるWToolStripMenuItem
+            // 
+            閉じるWToolStripMenuItem.Name = "閉じるWToolStripMenuItem";
+            閉じるWToolStripMenuItem.Size = new Size(176, 26);
+            閉じるWToolStripMenuItem.Text = "閉じる(&W)";
             // 
             // Form1
             // 
