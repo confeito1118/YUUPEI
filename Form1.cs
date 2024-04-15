@@ -40,6 +40,41 @@ namespace YUUPEI
             wb.SaveAs(@"C:\Users\yudu-\Downloads\hogehoge.xlsx");
         }
 
+        /// <summary>
+        /// ユーザー情報の取得
+        /// </summary>
+        private void selectUserList()
+        {
+            using (var connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+
+                var cnt = 0;
+
+                var sql = "SELECT * FROM userlist";
+                using (var command = new SQLiteCommand(sql, connection))
+                {
+                    using (var reader = command.ExecuteReader())
+                    {
+
+                        while (reader.Read())
+                        {
+                            userDataView.Rows[cnt].Cells[0].Value = (string)reader["name_kan_sei"] + " " + (string)reader["name_kan_mei"];
+                            // userDataView.Rows[cnt].Cells[].Value = (string) reader["name_furi_sei"] + " " + (string) reader["name_furi_mei"];
+                            userDataView.Rows[cnt].Cells[1].Value = (string)reader["address"];
+                            userDataView.Rows[cnt].Cells[2].Value = (string)reader["tell"] + "（" + (string)reader["tell_type"] + "）";
+                            userDataView.Rows[cnt].Cells[3].Value = "編集";
+                            userDataView.Rows[cnt].Cells[3].ToolTipText = reader["number"].ToString();
+                            cnt++;
+                        }
+                        reader.Close();
+                    }
+                }
+
+                connection.Close();
+            }
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
             string fileName = @"./start.txt";
@@ -48,37 +83,8 @@ namespace YUUPEI
                 // MessageBox.Show("'" + fileName + "' セットアップウィザードは存在します。");
 
                 userDataView.RowCount = 50;
-
-                using (var connection = new SQLiteConnection(connectionString))
-                {
-                    connection.Open();
-
-                    var cnt = 0;
-
-                    var sql = "SELECT * FROM userlist";
-                    using (var command = new SQLiteCommand(sql, connection))
-                    {
-                        using (var reader = command.ExecuteReader())
-                        {
-
-                            while (reader.Read())
-                            {
-                                userDataView.Rows[cnt].Cells[0].Value = (string)reader["name_kan_sei"] + " " + (string)reader["name_kan_mei"];
-                                // userDataView.Rows[cnt].Cells[].Value = (string) reader["name_furi_sei"] + " " + (string) reader["name_furi_mei"];
-                                userDataView.Rows[cnt].Cells[1].Value = (string)reader["address"];
-                                userDataView.Rows[cnt].Cells[2].Value = (string)reader["tell"] + "（" + (string)reader["tell_type"] + "）";
-                                userDataView.Rows[cnt].Cells[3].Value = "編集";
-                                cnt++;
-                            }
-                            reader.Close();
-                        }
-                    }
-
-                    connection.Close();
-                }
-            }
-            else
-            {
+                selectUserList();
+            } else {
                 // テーブル名が存在しなければ作成する
                 StringBuilder query = new StringBuilder();
                 query.Clear();
@@ -143,6 +149,11 @@ namespace YUUPEI
             form2.Show();
         }
 
+        /// <summary>
+        /// 編集ボタンのクリック
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void userDataView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             // クリックした列が対象列かチェックする

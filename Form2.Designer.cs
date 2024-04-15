@@ -189,7 +189,7 @@
             // 
             // mansion
             // 
-            mansion.Location = new Point(768, 426);
+            mansion.Location = new Point(119, 516);
             mansion.Name = "mansion";
             mansion.Size = new Size(200, 27);
             mansion.TabIndex = 42;
@@ -197,7 +197,7 @@
             // label24
             // 
             label24.AutoSize = true;
-            label24.Location = new Point(679, 335);
+            label24.Location = new Point(28, 419);
             label24.Name = "label24";
             label24.Size = new Size(69, 20);
             label24.TabIndex = 37;
@@ -205,7 +205,7 @@
             // 
             // zipcode
             // 
-            zipcode.Location = new Point(768, 332);
+            zipcode.Location = new Point(103, 416);
             zipcode.Name = "zipcode";
             zipcode.Size = new Size(200, 27);
             zipcode.TabIndex = 38;
@@ -213,7 +213,7 @@
             // label25
             // 
             label25.AutoSize = true;
-            label25.Location = new Point(679, 379);
+            label25.Location = new Point(30, 469);
             label25.Name = "label25";
             label25.Size = new Size(39, 20);
             label25.TabIndex = 39;
@@ -221,7 +221,7 @@
             // 
             // address
             // 
-            address.Location = new Point(768, 376);
+            address.Location = new Point(119, 466);
             address.Name = "address";
             address.Size = new Size(200, 27);
             address.TabIndex = 40;
@@ -229,7 +229,7 @@
             // label26
             // 
             label26.AutoSize = true;
-            label26.Location = new Point(679, 429);
+            label26.Location = new Point(30, 519);
             label26.Name = "label26";
             label26.Size = new Size(78, 20);
             label26.TabIndex = 41;
@@ -286,7 +286,13 @@
             // groupBox1
             // 
             groupBox1.Controls.Add(disease);
+            groupBox1.Controls.Add(mansion);
             groupBox1.Controls.Add(label17);
+            groupBox1.Controls.Add(label25);
+            groupBox1.Controls.Add(zipcode);
+            groupBox1.Controls.Add(address);
+            groupBox1.Controls.Add(label24);
+            groupBox1.Controls.Add(label26);
             groupBox1.Controls.Add(tell_type);
             groupBox1.Controls.Add(label8);
             groupBox1.Controls.Add(tell);
@@ -295,14 +301,14 @@
             groupBox1.Controls.Add(label7);
             groupBox1.Location = new Point(41, 29);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(1000, 476);
+            groupBox1.Size = new Size(1000, 570);
             groupBox1.TabIndex = 15;
             groupBox1.TabStop = false;
             groupBox1.Text = "利用者様情報";
             // 
             // add
             // 
-            add.Location = new Point(947, 543);
+            add.Location = new Point(947, 618);
             add.Name = "add";
             add.Size = new Size(94, 29);
             add.TabIndex = 43;
@@ -314,14 +320,8 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1088, 609);
+            ClientSize = new Size(1082, 669);
             Controls.Add(add);
-            Controls.Add(mansion);
-            Controls.Add(label24);
-            Controls.Add(zipcode);
-            Controls.Add(label25);
-            Controls.Add(address);
-            Controls.Add(label26);
             Controls.Add(label6);
             Controls.Add(date_birthday);
             Controls.Add(sex_woman);
