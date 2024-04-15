@@ -35,10 +35,13 @@
             adress = new DataGridViewTextBoxColumn();
             tell = new DataGridViewTextBoxColumn();
             detail = new DataGridViewButtonColumn();
+            delete = new DataGridViewButtonColumn();
             menuStrip1 = new MenuStrip();
             ファイルFToolStripMenuItem = new ToolStripMenuItem();
             ユーザ追加AToolStripMenuItem = new ToolStripMenuItem();
             閉じるWToolStripMenuItem = new ToolStripMenuItem();
+            reloadTToolStripMenuItem = new ToolStripMenuItem();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)userDataView).BeginInit();
             menuStrip1.SuspendLayout();
             SuspendLayout();
@@ -66,7 +69,7 @@
             // userDataView
             // 
             userDataView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            userDataView.Columns.AddRange(new DataGridViewColumn[] { name_kan_sei, adress, tell, detail });
+            userDataView.Columns.AddRange(new DataGridViewColumn[] { name_kan_sei, adress, tell, detail, delete });
             userDataView.Location = new Point(53, 125);
             userDataView.Name = "userDataView";
             userDataView.RowHeadersWidth = 51;
@@ -105,10 +108,18 @@
             detail.Text = "詳細";
             detail.Width = 125;
             // 
+            // delete
+            // 
+            delete.HeaderText = "削除";
+            delete.MinimumWidth = 6;
+            delete.Name = "delete";
+            delete.Text = "削除";
+            delete.Width = 125;
+            // 
             // menuStrip1
             // 
             menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { ファイルFToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { ファイルFToolStripMenuItem, reloadTToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(1216, 28);
@@ -135,11 +146,28 @@
             閉じるWToolStripMenuItem.Size = new Size(176, 26);
             閉じるWToolStripMenuItem.Text = "閉じる(&W)";
             // 
+            // reloadTToolStripMenuItem
+            // 
+            reloadTToolStripMenuItem.Name = "reloadTToolStripMenuItem";
+            reloadTToolStripMenuItem.Size = new Size(72, 24);
+            reloadTToolStripMenuItem.Text = "更新(&R)";
+            reloadTToolStripMenuItem.Click += reloadTToolStripMenuItem_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(504, 64);
+            label1.Name = "label1";
+            label1.Size = new Size(50, 20);
+            label1.TabIndex = 4;
+            label1.Text = "label1";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1216, 536);
+            Controls.Add(label1);
             Controls.Add(userDataView);
             Controls.Add(excel);
             Controls.Add(userAdd);
@@ -164,9 +192,12 @@
         private ToolStripMenuItem ファイルFToolStripMenuItem;
         private ToolStripMenuItem ユーザ追加AToolStripMenuItem;
         private ToolStripMenuItem 閉じるWToolStripMenuItem;
+        private ToolStripMenuItem reloadTToolStripMenuItem;
         private DataGridViewTextBoxColumn name_kan_sei;
         private DataGridViewTextBoxColumn adress;
         private DataGridViewTextBoxColumn tell;
         private DataGridViewButtonColumn detail;
+        private DataGridViewButtonColumn delete;
+        private Label label1;
     }
 }

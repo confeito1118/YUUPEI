@@ -1,6 +1,8 @@
 using ClosedXML.Excel;
 using DocumentFormat.OpenXml.Office2019.Excel.ThreadedComments;
 using DocumentFormat.OpenXml.Spreadsheet;
+using DocumentFormat.OpenXml.Wordprocessing;
+using Microsoft.VisualBasic;
 using System.Data.SQLite;
 using System.Net;
 using System.Reflection.Emit;
@@ -52,19 +54,20 @@ namespace YUUPEI
                 var cnt = 0;
 
                 var sql = "SELECT * FROM userlist";
+
                 using (var command = new SQLiteCommand(sql, connection))
                 {
                     using (var reader = command.ExecuteReader())
                     {
-
                         while (reader.Read())
                         {
                             userDataView.Rows[cnt].Cells[0].Value = (string)reader["name_kan_sei"] + " " + (string)reader["name_kan_mei"];
-                            // userDataView.Rows[cnt].Cells[].Value = (string) reader["name_furi_sei"] + " " + (string) reader["name_furi_mei"];
                             userDataView.Rows[cnt].Cells[1].Value = (string)reader["address"];
                             userDataView.Rows[cnt].Cells[2].Value = (string)reader["tell"] + "（" + (string)reader["tell_type"] + "）";
                             userDataView.Rows[cnt].Cells[3].Value = "編集";
                             userDataView.Rows[cnt].Cells[3].ToolTipText = reader["number"].ToString();
+                            userDataView.Rows[cnt].Cells[4].Value = "削除";
+                            userDataView.Rows[cnt].Cells[4].ToolTipText = reader["number"].ToString();
                             cnt++;
                         }
                         reader.Close();
@@ -84,7 +87,9 @@ namespace YUUPEI
 
                 userDataView.RowCount = 50;
                 selectUserList();
-            } else {
+            }
+            else
+            {
                 // テーブル名が存在しなければ作成する
                 StringBuilder query = new StringBuilder();
                 query.Clear();
@@ -157,13 +162,43 @@ namespace YUUPEI
         private void userDataView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             // クリックした列が対象列かチェックする
-            DataGridView dgv = (DataGridView) sender;
-            //"Button"列ならば、ボタンがクリックされた
+            DataGridView dgv = (DataGridView)sender;
+            // 詳細ボタンをクリック
             if (dgv.Columns[e.ColumnIndex].Name == "detail")
             {
                 MessageBox.Show(e.RowIndex.ToString() +
                     "行のボタンがクリックされました。");
             }
+            // 削除ボタンをクリック
+            if (dgv.Columns[e.ColumnIndex].Name == "delete")
+            {
+                // 削除ボタンのツールチップを取得
+                // label1.Text = userDataView.Rows[e.RowIndex].Cells[4].ToolTipText;
+                // 削除処理
+                try
+                {
+                    using (var conn = new SQLiteConnection(connectionString))
+                    using (var command = conn.CreateCommand())
+                    {
+                        // 接続
+                        conn.Open();
+
+                        // コマンドの実行処理
+                        command.CommandText = "DELETE FROM userlist WHERE number = " + userDataView.Rows[e.RowIndex].Cells[4].ToolTipText;
+                        command.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("削除に失敗しました");
+                }
+
+            }
+        }
+
+        private void reloadTToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            selectUserList();
         }
     }
 }

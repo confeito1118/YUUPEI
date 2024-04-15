@@ -43,8 +43,6 @@ namespace YUUPEI
             );
 
             this.Close();
-
-            // Form1.selectUserList();
         }
 
         // ユーザ情報の登録
